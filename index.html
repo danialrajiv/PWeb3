@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global News Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 1rem;
+            border-bottom: 3px solid #cc0000;
+            position: relative;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #cc0000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .search-bar {
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: none;
+            width: 200px;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background-color: white;
+            padding: 1rem;
+            transition: transform 0.3s ease;
+            display: none; /* Hidden by default */
+        }
+
+        .news-card.visible {
+            display: block;
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .category-tag {
+            background-color: #cc0000;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .trending-sidebar {
+            background-color: white;
+            padding: 1rem;
+        }
+
+        .active-category {
+            border-bottom: 2px solid white;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .search-bar {
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">NFs</div>
+            <div class="nav-links">
+                <a href="#" class="category-link active-category" data-category="Home">Home</a>
+                <a href="#" class="category-link" data-category="sports">Sports</a>
+                <a href="#" class="category-link" data-category="business">Business</a>
+                <a href="#" class="category-link" data-category="tech">Tech</a>
+                <a href="#" class="category-link" data-category="politics">Politics</a>
+                <a href="#" class="category-link" data-category="talks">Talks</a>
+                <a href="#" class="category-link" data-category="automotive">Automotive</a>
+
+                <input type="text" class="search-bar" placeholder="Search news..." id="searchInput">
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <section class="news-grid" id="newsContainer">
+            <!-- News Articles -->
+            <article class="news-card visible" data-category="sports" data-search="sports football championship">
+                <img src="💙The champions ⚽🩵.jpg" alt="Sports News">
+                <div class="category-tag">Sports</div>
+                <h3>Championship Final Ends Dramatically</h3>
+                <p>Manchester City wins the UCL and take the treble winners..</p>
+            </article>
+
+            <article class="news-card visible" data-category="business" data-search="business market economy">
+                <img src="Premium Photo _ Stock market or forex trading graph in graphic concept.jpg" alt="Business News">
+                <div class="category-tag">Business</div>
+                <h3>Stock Market Shows Strong Recovery</h3>
+                <p>Global markets rebound after weeks of volatility...</p>
+            </article>
+
+            <article class="news-card visible" data-category="tech" data-search="technology innovation ai">
+                <img src="Video of Elon Musk's SpaceX Starship exploding during second orbital launch goes viral.jpg" alt="Tech News">
+                <div class="category-tag">Tech</div>
+                <h3>Musk says first mission to Mars will launch next year</h3>
+                <p>The billionaire says an unmanned mission by his SpaceX "Starship" vehicle will be followed by human landings as early as 2029..</p>
+            </article>
+
+            <article class="news-card visible" data-category="politics" data-search="policies government corruption">
+                <img src="4e85e275-8e8d-48ea-87ab-a396c0856926.jpg" alt="Politics News">
+                <div class="category-tag">Politics</div>
+                <h3>Country Vs Corruption</h3>
+                <p>Indonesian government make a strong move after approval by President againts corruption..</p>
+            </article>
+
+            <article class="news-card visible" data-category="talks" data-search="talks tedx">
+                <img src="Confessions Of A TEDx Event Organizer.jpg" alt="Talks News">
+                <div class="category-tag">Talks</div>
+                <h3>Confessions of A TEDx Event Organizer</h3>
+                <p>TEDx Event Organizer take a confessions on a meeting..</p>
+            </article>
+
+            <article class="news-card visible" data-category="automotive" data-search="automotive race car amg">
+                <img src="amg.jpg" alt="">
+                <div class="category-tag">Automotive</div>
+                <h3>Mercedes Takes the First Place Dramatically</h3>
+                <p>Mercedes-AMG GT3 finally overtakes all of the car in pit..</p>
+            </article>
+        </section>
+
+        <aside class="trending-sidebar">
+            <h4>TRENDING NOW</h4>
+            <ul class="trending-list">
+                <li class="trending-item">Market Trends Analysis</li>
+                <li class="trending-item">New Sports Arena Plans</li>
+                <li class="trending-item">Tech Conference Updates</li>
+                <li class="trending-item">F1 Finals Championship</li>
+                <li class="trending-item">Government Againts Corruption</li>
+                <li class="trending-item">Unmanned Mission to Mars</li>
+                <li class="trending-item">Political Debate Schedule</li>
+            </ul>
+        </aside>
+    </main>
+
+    <script>
+        // Category Filter
+        document.querySelectorAll('.category-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const category = link.dataset.category;
+                
+                // Update active category
+                document.querySelectorAll('.category-link').forEach(l => l.classList.remove('active-category'));
+                link.classList.add('active-category');
+                
+                // Filter news cards
+                document.querySelectorAll('.news-card').forEach(card => {
+                    const cardCategory = card.dataset.category;
+                    if (category === 'all' || cardCategory === category) {
+                        card.classList.add('visible');
+                    } else {
+                        card.classList.remove('visible');
+                    }
+                });
+            });
+        });
+
+        // Search Functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            document.querySelectorAll('.news-card').forEach(card => {
+                const searchData = card.dataset.search.toLowerCase();
+                const isVisible = searchData.includes(searchTerm);
+                
+                if (isVisible) {
+                    card.classList.add('visible');
+                } else {
+                    card.classList.remove('visible');
+                }
+            });
+        });
+
+        // Combined Filtering
+        function filterNews() {
+            const activeCategory = document.querySelector('.category-link.active-category').dataset.category;
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            document.querySelectorAll('.news-card').forEach(card => {
+                const cardCategory = card.dataset.category;
+                const matchesCategory = activeCategory === 'all' || cardCategory === activeCategory;
+                const matchesSearch = card.dataset.search.toLowerCase().includes(searchTerm);
+
+                card.classList.toggle('visible', matchesCategory && matchesSearch);
+            });
+        }
+
+        // Add event listeners to both category links and search input
+        document.querySelectorAll('.category-link, #searchInput').forEach(element => {
+            element.addEventListener('click', filterNews);
+            element.addEventListener('input', filterNews);
+        });
+    </script>
+</body>
+</html>
